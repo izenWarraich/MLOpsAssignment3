@@ -14,7 +14,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy installed packages from builder
+# Copy installed packages from builder stage
 COPY --from=builder /root/.local /root/.local
 
 # Copy application code

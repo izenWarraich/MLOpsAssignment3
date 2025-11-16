@@ -5,12 +5,12 @@ metadata:
   labels:
     app: flask-app
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 5000
-    protocol: TCP
-    name: http
+  type: NodePort
   selector:
     app: flask-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 30080
 

@@ -26,17 +26,13 @@ jobs:
     
     - name: Run tests
       run: |
-        echo "Running tests..."
-        # Add your test commands here
+        python -c "import flask; print('Flask imported successfully')"
     
     - name: Build Docker image
       run: |
         docker build -t flask-app:latest .
     
-    - name: Deploy to Kubernetes
+    - name: Test Docker image
       run: |
-        echo "Deploying to Kubernetes..."
-        # Add kubectl deployment commands here
-        # kubectl apply -f kubernetes/deployment.yaml
-        # kubectl apply -f kubernetes/service.yaml
+        docker run --rm flask-app:latest python -c "import flask; print('Flask works in container')"
 
